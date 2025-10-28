@@ -6,6 +6,7 @@ export default function About() {
     <section id="about" className="about-section">
       <div className="container" data-aos="fade-up">
         <h2 className="section-title">About Me</h2>
+
         <p className="about-intro">
           I’m a passionate <strong>Software Engineering Technology</strong> student at
           Centennial College with a strong interest in front-end development,

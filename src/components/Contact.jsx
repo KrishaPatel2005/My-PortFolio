@@ -2,12 +2,12 @@ import React from "react";
 import "../index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-
 export default function Contact() {
   return (
     <section id="contact" className="contact-section">
       <div className="container">
         <h2 className="section-title">Let's Connect and Collaborate!</h2>
+
         <div className="contact-grid">
           <div className="contact-info">
             <p className="contact-description">
@@ -63,20 +63,27 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Contact Form */}
           <form className="contact-form">
             <div className="form-group">
               <input type="text" id="name" placeholder=" " required />
               <label htmlFor="name">Your Name</label>
             </div>
+
             <div className="form-group">
               <input type="email" id="email" placeholder=" " required />
               <label htmlFor="email">Your Email</label>
             </div>
+
             <div className="form-group">
-              <textarea id="message" rows="6" placeholder=" " required></textarea>
+              <textarea
+                id="message"
+                rows="6"
+                placeholder=" "
+                required
+              ></textarea>
               <label htmlFor="message">Your Message</label>
             </div>
+
             <button type="submit" className="form-submit-btn">
               Send Message
             </button>

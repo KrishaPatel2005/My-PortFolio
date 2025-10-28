@@ -78,9 +78,10 @@ export default function Projects() {
 
   return (
     <section id="projects" className="projects-section">
-  <div id="project-sparkles"></div> {/* background animation */}
-  <div className="container" data-aos="fade-up">
-    <h2 className="section-title">Projects</h2>
+      <div id="project-sparkles"></div>
+      <div className="container" data-aos="fade-up">
+        <h2 className="section-title">Projects</h2>
+
         <div className="projects-grid">
           {projects.map((proj, index) => (
             <div
@@ -92,13 +93,16 @@ export default function Projects() {
               <div className="project-icon">
                 <i className={proj.icon}></i>
               </div>
+
               <h3>{proj.title}</h3>
               <p>{proj.description}</p>
+
               <div className="project-tools">
                 {proj.tools.map((tool, i) => (
                   <span key={i}>{tool}</span>
                 ))}
               </div>
+
               <a
                 href={proj.link}
                 target="_blank"

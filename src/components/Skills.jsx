@@ -43,7 +43,7 @@ export default function Skills() {
 
   useEffect(() => {
     const fills = document.querySelectorAll(".skill-progress");
-    fills.forEach(fill => {
+    fills.forEach((fill) => {
       const width = fill.getAttribute("data-width");
       fill.style.width = `${width}%`;
     });
@@ -53,6 +53,7 @@ export default function Skills() {
     <section id="skills" className="skills-section">
       <div className="container" data-aos="fade-up">
         <h2 className="section-title">Technical Skills</h2>
+
         <div className="skills-grid">
           {skillCategories.map((cat, index) => (
             <div
@@ -61,13 +62,17 @@ export default function Skills() {
               data-aos="fade-up"
               data-aos-delay={index * 150}
             >
-              <h3><i className={cat.icon}></i> {cat.title}</h3>
+              <h3>
+                <i className={cat.icon}></i> {cat.title}
+              </h3>
+
               {cat.skills.map((skill, i) => (
                 <div key={i} className="skill-item">
                   <div className="skill-label">
                     <span>{skill.name}</span>
                     <span>{skill.percent}%</span>
                   </div>
+
                   <div className="skill-bar">
                     <div
                       className="skill-progress"

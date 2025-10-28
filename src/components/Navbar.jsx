@@ -7,30 +7,27 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  // Load saved theme
   useEffect(() => {
-    const saved = localStorage.getItem("theme") || "dark";
-    setTheme(saved);
-    document.documentElement.setAttribute("data-theme", saved);
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    setTheme(savedTheme);
+    document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
 
-  // Scroll shadow/elevation
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll-spy (active link underline)
   useEffect(() => {
-    const handler = () => {
+    const handleActiveSection = () => {
       const sections = document.querySelectorAll("section[id]");
       let current = "home";
 
       sections.forEach((section) => {
         const id = section.getAttribute("id");
-        const top = section.offsetTop - 120; // offset for sticky navbar
+        const top = section.offsetTop - 120;
         const height = section.offsetHeight;
         const y = window.scrollY;
 
@@ -42,20 +39,21 @@ export default function Navbar() {
       setActiveSection(current);
     };
 
-    handler(); // run once on mount
-    window.addEventListener("scroll", handler, { passive: true });
-    window.addEventListener("resize", handler);
+    handleActiveSection();
+    window.addEventListener("scroll", handleActiveSection, { passive: true });
+    window.addEventListener("resize", handleActiveSection);
+
     return () => {
-      window.removeEventListener("scroll", handler);
-      window.removeEventListener("resize", handler);
+      window.removeEventListener("scroll", handleActiveSection);
+      window.removeEventListener("resize", handleActiveSection);
     };
   }, []);
 
   const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    localStorage.setItem("theme", next);
-    document.documentElement.setAttribute("data-theme", next);
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    document.documentElement.setAttribute("data-theme", nextTheme);
   };
 
   const closeMenu = () => setMenuOpen(false);
@@ -74,12 +72,10 @@ export default function Navbar() {
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="container">
         <nav className="navbar">
-          {/* Left: Logo / Name */}
           <div className="logo">
             <a href="#hero" onClick={closeMenu}>Krisha Patel</a>
           </div>
 
-          {/* Center/Right: Links */}
           <ul className={`nav-links ${menuOpen ? "active" : ""}`} id="navLinks">
             {navItems.map(({ id, href, label }) => (
               <li key={id}>
@@ -94,7 +90,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Right: Theme toggle + Hamburger */}
           <div className="nav-actions">
             <button
               type="button"
@@ -115,7 +110,9 @@ export default function Navbar() {
               aria-controls="navLinks"
               onClick={() => setMenuOpen(!menuOpen)}
             >
-              <span></span><span></span><span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </button>
           </div>
         </nav>

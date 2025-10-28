@@ -1,6 +1,6 @@
 import React from "react";
 import "../index.css";
-import profile from "../assets/logo.jpg"; // make sure your image is placed in src/assets/
+import profile from "../assets/logo.jpg";
 
 export default function Hero() {
   return (
@@ -8,7 +8,6 @@ export default function Hero() {
       <div className="hero-overlay"></div>
 
       <div className="container hero-grid">
-        {/* Left side — Text */}
         <div className="hero-content" data-aos="fade-up">
           <p className="hero-subtitle">Hello, I’m</p>
           <h1 className="hero-title">Krisha Patel</h1>
@@ -29,7 +28,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right side — Profile Image */}
         <div className="hero-image" data-aos="fade-left">
           <img src={profile} alt="Krisha Patel" className="profile-photo" />
         </div>
